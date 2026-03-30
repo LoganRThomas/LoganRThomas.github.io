@@ -1,9 +1,296 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Logan Thomas Portfolio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logan Thomas | Mechanical Engineering Portfolio</title>
+    <style>
+        /* Base Styles */
+        :root {
+            --primary-color: #275d38; 
+            --secondary-color: #f4f4f9;
+            --text-dark: #333333;
+            --text-light: #666666;
+            --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            font-family: var(--font-family);
+            line-height: 1.6;
+            color: var(--text-dark);
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: var(--text-dark);
+            color: #ffffff;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 0;
+            padding: 0;
+        }
+        
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+        
+        nav a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        header {
+            background-color: var(--secondary-color);
+            padding: 4rem 2rem;
+            text-align: center;
+            border-bottom: 4px solid var(--primary-color);
+        }
+        
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+        
+        header h2 {
+            font-size: 1.5rem;
+            color: var(--text-light);
+            font-weight: 400;
+            margin-bottom: 1rem;
+        }
+        
+        .contact-links {
+            margin-bottom: 2rem;
+        }
+
+        .contact-links a, .contact-links span {
+            margin: 0 10px;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .about-me {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: left;
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            background: #ffffff;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            border-left: 4px solid var(--primary-color);
+        }
+
+        /* Main Content Container */
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            padding: 2rem;
+        }
+
+        /* Section Styles */
+        section {
+            margin-bottom: 3rem;
+        }
+        
+        h3 {
+            font-size: 2rem;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Cards for Experience & Projects */
+        .card {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        
+        .card h4 {
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+            font-size: 1.25rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .card .date {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            font-weight: normal;
+        }
+
+        /* Skills Tags */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+        
+        .skill-category h5 {
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: var(--text-dark);
+            color: #fff;
+            margin-top: 2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+            .card h4 {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>Welcome to my site!</h1>
+
+    <nav>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+        </ul>
+    </nav>
+
+    <header id="about">
+        <h1>LOGAN THOMAS </h1>
+        <h2>Mechanical Engineering Student </h2>
+        <div class="contact-links">
+            <a href="mailto:loganrichthomas@gmail.com">loganrichthomas@gmail.com </a> | 
+            <a href="https://linkedin.com/in/loganthomas29" target="_blank">LinkedIn </a> | 
+            <span>Alameda, CA </span>
+        </div>
+        
+        <div class="about-me">
+            <p>I am a Mechanical Engineering student at UCLA  maintaining a 4.0 GPA , with a strong focus on design, manufacturing, and robotics. My experience ranges from engineering precision hardware for viral testing platforms at the UCLA Bioelectronics Lab  to developing autonomous mechanisms for student robotics teams. I am actively seeking opportunities to apply my skills in electromechanical integration , CAD , and physical prototyping  to real-world engineering challenges.</p>
+        </div>
+    </header>
+
+    <div class="container">
+        
+        <section id="education">
+            <h3>EDUCATION </h3>
+            <div class="card">
+                <h4>UNIVERSITY OF CALIFORNIA, LOS ANGELES (UCLA)  <span class="date">Expected Jun 2029 </span></h4>
+                <p><strong>Degree:</strong> Bachelor of Science, Mechanical Engineering </p>
+                <p><strong>GPA:</strong> 4.0 </p>
+            </div>
+        </section>
+
+        <section id="skills">
+            <h3>SKILLS </h3>
+            <div class="card skills-grid">
+                <div class="skill-category">
+                    <h5>Design & Modeling </h5>
+                    <p>SolidWorks (CSWA), Design for Manufacturability (DFM), Tolerance Analysis, 3D Printing and Laser Cutting, QGIS </p>
+                </div>
+                <div class="skill-category">
+                    <h5>Programming </h5>
+                    <p>C++, Python (Data Analysis), PID Control Algorithms, Arduino, JavaScript, HTML/CSS, GitHub </p>
+                </div>
+                <div class="skill-category">
+                    <h5>Electronics </h5>
+                    <p>Circuit Design, Embedded Systems, IMU Integration (MPU-6050), Sensors (Ultrasonic), Soldering </p>
+                </div>
+                <div class="skill-category">
+                    <h5>Manufacturing </h5>
+                    <p>Silicone Molding, Root Cause Analysis (RCA), Precision Measurement, Manual Machining, Mechanical Assembly </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience">
+            <h3>EXPERIENCE </h3>
+            
+            <div class="card">
+                <h4>ENGINEERING RESEARCH INTERN | IBL (UCLA Bioelectronics Lab)  <span class="date">Jan 2026-Present </span></h4>
+                <p><em>Ferrobotic Viral Testing Platform </em></p>
+                <ul>
+                    <li>Injection Port Integration: Pioneered a standardized, mass-producible molding process to embed custom 2-mm self-sealing RTV silicone ports into the testing cartridges, leveraging rigorous root-cause analysis and iterative refinement of mold geometries, dispensing pressure, and fluid-fill sequencing to systematically eliminate compounding air entrapment defects. </li>
+                    <li>Precision Enclosure: Engineered a modular enclosure with a precision-guided sliding cartridge, achieving sub-millimeter vertical tolerances to preserve optical line-of-sight and unrestricted ferrobot kinematics. </li>
+                    <li>Mechanism Design: Designed and modeled a cross-spherical gear mechanism for independent two-axis tilt control, conducting actuation trade-offs to define the roadmap for closed-loop stabilization. </li>
+                    <li>Optical Subsystem: Re-architected the imaging assembly for interchangeable camera modules, designing a custom diffusion solution to eliminate hotspots and ensure uniform illumination across the microfluidic observation region. </li>
+                    <li>Controls & Algorithms: Developed MPU-6050 calibration algorithms to compute real-time tilt angles and mitigate sensor drift during UAV transit, implementing user-facing instability alerts for post-flight operations. </li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h3>TECHNICAL PROJECTS </h3>
+            
+            <div class="card">
+                <h4>INTERNAL ARM ENGINEER | X1 Robotics (Student Project Team)  <span class="date">Sep 2025-Present </span></h4>
+                <p><em>Autonomous "BB-8" Robot </em></p>
+                <ul>
+                    <li>Mechanical Integration: Engineered a custom rod-and-sleeve coupling to bridge the Lazy Susan bearing and the yaw motor housing, establishing the structural interface required to decouple head rotation from the drivetrain. </li>
+                    <li>Component Design: Modeled and assembled a custom yaw motor housing in SolidWorks, optimizing the geometry for 3D printing manufacturability (DFM) while maintaining strict alignment tolerances with the main chassis. </li>
+                    <li>Shell Design & Fabrication: Refined the spherical chassis geometry and co-defined the coating application process for a high-friction outer coating, ensuring reliable traction for the head drive mechanism against the rigid metal substrate. </li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h4>ELECTRIC GUITAR FABRICATION  <span class="date">Jun 2024-Present </span></h4>
+                <p><em>Personal Project </em></p>
+                <ul>
+                    <li>Precision Manufacturing: Fabricated two custom electric guitars using manual machining (router/bandsaw), achieving precise scale length and fret alignment to guarantee intonation accuracy across the fretboard. </li>
+                    <li>Electromechanical Systems: Engineered passive circuits with star-grounding and coil-splitting, routing complex wiring within constrained cavities to prevent mechanical binding and maintain signal integrity. </li>
+                    <li>System Integration: Installed and calibrated a Floyd Rose tremolo bridge, balancing spring tension against string gauge to ensure precise pitch return after mechanical modulation. </li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h4>MECHATRONICS AND AEROSPACE | COSMOS at UCLA  <span class="date">Jul 2024-Aug 2024 </span></h4>
+                <p><em>Self-Balancing Robot & Rocketry </em></p>
+                <ul>
+                    <li>Aerodynamic Simulation: Designed and constructed a model rocket using OpenRocket to optimize fin geometry for maximum flight distance, conducting iterative launches to validate real-world performance against theoretical trajectories. </li>
+                    <li>Control Systems: Built a two-wheeled self-balancing robot, implementing PID algorithms in C++ to maintain vertical equilibrium by continuously adjusting motor torque based on real-time IMU data. </li>
+                    <li>Autonomous Integration: Enhanced the self-balancing platform with voice control and maze-solving logic, processing audio commands and ultrasonic sensor data to execute directional maneuvers while maintaining stability. </li>
+                </ul>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Logan Thomas. All rights reserved. </p>
+    </footer>
+
 </body>
 </html>
