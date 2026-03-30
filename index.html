@@ -98,6 +98,16 @@
             border-left: 4px solid var(--primary-color);
         }
 
+        .profile-img {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%; /* This makes the image a perfect circle */
+            object-fit: cover; /* This prevents the image from looking stretched */
+            border: 4px solid var(--primary-color); /* Adds a nice green border */
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
         /* Main Content Container */
         .container {
             max-width: 1000px;
@@ -190,6 +200,7 @@
     </nav>
 
     <header id="about">
+        <img src="Logan Thomas - Headshot.JPG" alt="Logan Thomas" class="profile-img">
         <h1>LOGAN THOMAS </h1>
         <h2>Mechanical Engineering Student </h2>
         
