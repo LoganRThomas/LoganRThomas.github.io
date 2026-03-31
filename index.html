@@ -80,10 +80,12 @@
         }
 
         .contact-links a, .contact-links span {
-            margin: 0 10px;
+            margin: 5px 10px; /* Increased vertical margin slightly */
             color: var(--primary-color);
             text-decoration: none;
             font-weight: bold;
+            display: inline-block; /* Added: Ensures padding/margins apply correctly */
+            white-space: nowrap;   /* Added: Prevents a link from breaking in half */
         }
         
         .about-me {
@@ -136,6 +138,7 @@
             padding: 1.5rem;
             margin-bottom: 1.5rem;
             box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         
         .card h4 {
@@ -145,6 +148,11 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
         }
 
        /* Project Image Gallery */
@@ -162,7 +170,7 @@
 
         .project-gallery img {
             width: 100%;
-            height: 200px; /* Slightly shorter so they look good in a grid */
+            aspect-ratio: 4 / 3; /* Keeps a consistent shape without a hard pixel limit */
             object-fit: cover;
             object-position: center;
             border-radius: 4px;
@@ -218,6 +226,8 @@
             /* Shrink the padding on the nav bar to make it thinner */
             nav {
                 padding: 0.5rem 0; 
+                /* Adds a subtle dark shadow to the right edge to imply depth */
+                box-shadow: inset -15px 0 15px -10px rgba(0, 0, 0, 0.7);
             }
             
             /* Make the links a single, swipeable row */
@@ -226,7 +236,7 @@
                 flex-wrap: nowrap; /* Forces them onto one line */
                 justify-content: flex-start; /* Aligns them to the left to start the scroll */
                 overflow-x: auto; /* Allows horizontal scrolling */
-                padding: 0 2rem 0.5rem 1rem; /* Adds space on the right, and a tiny bit of space on the bottom for the scrollbar */
+                padding: 0 40px 0.5rem 1rem; /* Added extra right padding */
                 gap: 1.5rem;
                 -webkit-overflow-scrolling: touch; /* Makes scrolling buttery smooth on iPhones */
             }
@@ -244,6 +254,7 @@
                 background: rgba(255, 255, 255, 0.3); /* A subtle, semi-transparent white line */
                 border-radius: 10px;
             }
+      }
 
         @media (max-width: 600px) {
             /* Fixes the skills alignment to keep them side-by-side on mobile */
