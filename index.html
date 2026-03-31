@@ -7,7 +7,8 @@
     <style>
         /* Base Styles */
         :root {
-            --primary-color: #275d38; 
+            --primary-color: #275d38;
+            --primary-hover: #1e4a2c; /* Darker green for hover states */
             --secondary-color: #f4f4f9;
             --text-dark: #333333;
             --text-light: #666666;
@@ -106,6 +107,19 @@
             font-weight: bold;
             display: inline-block; /* Added: Ensures padding/margins apply correctly */
             white-space: nowrap;   /* Added: Prevents a link from breaking in half */
+            transition: transform 0.2s ease, color 0.2s ease;
+            backface-visibility: hidden;
+            -webkit-font-smoothing: subpixel-antialiased;
+        }
+
+        /* Prevents the link from looking "faded" or purple after being clicked */
+        .contact-links a:visited {
+            color: var(--primary-color);
+        }
+        
+        .contact-links a:hover, .contact-links span:hover {
+            color: var(--primary-hover); /* Changes to the darker green we added to :root */
+            transform: scale(1.1);       /* Makes the link 10% larger */
         }
         
         .about-me {
