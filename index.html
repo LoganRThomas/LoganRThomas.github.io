@@ -52,6 +52,7 @@
         nav a:hover {
             color: var(--primary-color);
         }
+        
 
         /* Hero Section */
         header {
@@ -217,6 +218,15 @@
                 flex-direction: column;
                 align-items: flex-start;
             }
+        }
+
+        /* --- NEW CODE: Fixes sticky header & adds smooth scrolling --- */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        section, header {
+            scroll-margin-top: 80px;
         }
     </style>
 </head>
