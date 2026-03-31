@@ -187,18 +187,37 @@
             font-weight: normal;
         }
 
-        /* Skills Tags */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-        }
-        
-        .skill-category h5 {
-            margin-bottom: 0.5rem;
-            color: var(--primary-color);
+        /* Resume-Style Skills Section */
+        .resume-skills {
+            list-style-type: none; 
+            padding: 0;
+            margin: 0 auto;
+            max-width: 800px;      
+            text-align: left;      
         }
 
+        .resume-skills li {
+            margin-bottom: 15px;   
+            line-height: 1.6;      
+            font-size: 16px;
+            color: var(--text-dark);
+        }
+
+        .resume-skills li strong:first-child {
+            display: inline-block;
+            width: 170px;          
+            color: #000;
+        }
+
+        /* Mobile responsive tweak for small phone screens */
+        @media (max-width: 600px) {
+            .resume-skills li strong:first-child {
+                display: block;    
+                width: auto;
+                margin-bottom: 5px;
+            }
+        }
+        
         /* Footer */
         footer {
             text-align: center;
@@ -273,25 +292,22 @@
             </div>
         </section>
 
-        <section id="skills">
+       <section id="skills">
             <h3>SKILLS </h3>
-            <div class="card skills-grid">
-                <div class="skill-category">
-                    <h5>Design & Modeling </h5>
-                    <p><a href="certification.html" target="_blank" style="color: var(--primary-color); text-decoration: underline;"><strong>SolidWorks (CSWA)</strong></a>, Design for Manufacturability <strong>(DFM)</strong>, <strong>Tolerance Analysis</strong>, 3D Printing and Laser Cutting, QGIS</p>                </div>
-                <div class="skill-category">
-                    <h5>Programming </h5>
-                    <p><strong>C++</strong>, <strong>Python</strong> (Data Analysis), <strong>PID</strong> Control Algorithms, <strong>Arduino</strong>, JavaScript, HTML/CSS, GitHub </p>
-                </div>
-                <div class="skill-category">
-                    <h5>Electronics </h5>
-                    <p>Circuit Design, <strong>Embedded Systems</strong>, IMU Integration (MPU-6050), Sensors (Ultrasonic), Soldering </p>
-                </div>
-                <div class="skill-category">
-                    <h5>Manufacturing </h5>
-                    <p>Silicone Molding, Root Cause Analysis <strong>(RCA)</strong>, Precision Measurement, <strong>Manual Machining</strong>, Mechanical Assembly </p>
-                </div>
-            </div>
+            <ul class="resume-skills">
+                <li>
+                    <strong>Design & Modeling:</strong> <a href="certification.html" target="_blank" style="color: var(--primary-color); text-decoration: underline;"><strong>SolidWorks (CSWA)</strong></a>, Design for Manufacturability <strong>(DFM)</strong>, <strong>Tolerance Analysis</strong>, 3D Printing and Laser Cutting, QGIS
+                </li>
+                <li>
+                    <strong>Programming:</strong> <strong>C++</strong>, <strong>Python</strong> (Data Analysis), <strong>PID</strong> Control Algorithms, <strong>Arduino</strong>, JavaScript, HTML/CSS, GitHub
+                </li>
+                <li>
+                    <strong>Electronics:</strong> Circuit Design, <strong>Embedded Systems</strong>, IMU Integration (MPU-6050), Sensors (Ultrasonic), Soldering
+                </li>
+                <li>
+                    <strong>Manufacturing:</strong> Silicone Molding, Root Cause Analysis <strong>(RCA)</strong>, Precision Measurement, <strong>Manual Machining</strong>, Mechanical Assembly
+                </li>
+            </ul>
         </section>
 
         <section id="experience">
