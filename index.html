@@ -187,25 +187,39 @@
             font-weight: normal;
         }
 
-       /* Resume-Style Skills Section */
+      /* Resume-Style Skills Section */
         .resume-skills {
             list-style-type: none; 
             padding: 0;
-            margin: 0; /* Removed the auto-centering so it aligns left */
+            margin: 0; 
             text-align: left;      
         }
 
         .resume-skills li {
+            display: flex; /* Forces the heading and the list into two distinct columns */
             margin-bottom: 15px;   
             line-height: 1.6;      
             font-size: 16px;
             color: var(--text-dark);
         }
 
-        .resume-skills li strong:first-child {
-            display: inline-block;
-            width: 175px; /* Bumped slightly to ensure 'Design & Modeling:' fits */          
+        .resume-skills li > strong:first-child {
+            flex: 0 0 175px; /* Locks the left column to exactly 175px */
             color: #000;
+        }
+
+        .skill-list {
+            flex: 1; /* Tells the right column to take up the remaining space and wrap cleanly */
+        }
+
+        /* Mobile responsive tweak for small phone screens */
+        @media (max-width: 600px) {
+            .resume-skills li {
+                flex-direction: column; /* Stacks the title on top of the skills on mobile */
+            }
+            .resume-skills li > strong:first-child {
+                margin-bottom: 5px;
+            }
         }
 
         /* Mobile responsive tweak for small phone screens */
@@ -291,21 +305,25 @@
             </div>
         </section>
 
-       <section id="skills">
+      <section id="skills">
             <h3>SKILLS </h3>
             <div class="card">
                 <ul class="resume-skills">
                     <li>
-                        <strong>Design & Modeling:</strong> <a href="certification.html" target="_blank" style="color: var(--primary-color); text-decoration: underline;"><strong>SolidWorks (CSWA)</strong></a>, <strong>AutoCAD</strong>, Design for Manufacturability <strong>(DFM)</strong>, <strong>Tolerance Analysis</strong>, 3D Printing and Laser Cutting, QGIS
+                        <strong>Design & Modeling:</strong> 
+                        <span class="skill-list"><a href="certification.html" target="_blank" style="color: var(--primary-color); text-decoration: underline;"><strong>SolidWorks (CSWA)</strong></a>, <strong>AutoCAD</strong>, Design for Manufacturability <strong>(DFM)</strong>, <strong>Tolerance Analysis</strong>, 3D Printing and Laser Cutting, QGIS</span>
                     </li>
                     <li>
-                        <strong>Programming:</strong> <strong>C++</strong>, <strong>Python</strong> (Data Analysis), <strong>MATLAB</strong>, <strong>PID</strong> Control Algorithms, <strong>Arduino</strong>, JavaScript, HTML/CSS, GitHub
+                        <strong>Programming:</strong> 
+                        <span class="skill-list"><strong>C++</strong>, <strong>Python</strong> (Data Analysis), <strong>MATLAB</strong>, <strong>PID</strong> Control Algorithms, <strong>Arduino</strong>, JavaScript, HTML/CSS, GitHub</span>
                     </li>
                     <li>
-                        <strong>Electronics:</strong> Circuit Design, <strong>Embedded Systems</strong>, IMU Integration (MPU-6050), Sensors (Ultrasonic), Soldering
+                        <strong>Electronics:</strong> 
+                        <span class="skill-list">Circuit Design, <strong>Embedded Systems</strong>, IMU Integration (MPU-6050), Sensors (Ultrasonic), Soldering</span>
                     </li>
                     <li>
-                        <strong>Manufacturing:</strong> Silicone Molding, Root Cause Analysis <strong>(RCA)</strong>, Precision Measurement, <strong>Manual Machining</strong>, Mechanical Assembly
+                        <strong>Manufacturing:</strong> 
+                        <span class="skill-list">Silicone Molding, Root Cause Analysis <strong>(RCA)</strong>, Precision Measurement, <strong>Manual Machining</strong>, Mechanical Assembly</span>
                     </li>
                 </ul>
             </div>
