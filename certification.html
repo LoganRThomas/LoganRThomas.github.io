@@ -1,58 +1,251 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CSWA Certification | Logan Thomas</title>
+    <title>Certifications — Logan Thomas</title>
+    <meta name="description" content="Professional certifications held by Logan Thomas, including the Certified SOLIDWORKS Associate (CSWA).">
+
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%232563eb'/><text x='32' y='45' font-family='monospace' font-size='30' font-weight='700' text-anchor='middle' fill='white'>LT</text></svg>">
+    <meta name="theme-color" content="#f5f7fb" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0a0f1a" media="(prefers-color-scheme: dark)">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <script>
+        (function () {
+            try {
+                var saved = localStorage.getItem('theme');
+                var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                document.documentElement.setAttribute('data-theme', saved || (prefersDark ? 'dark' : 'light'));
+            } catch (e) {}
+        })();
+    </script>
+
     <style>
+        /* Blueprint-blue tokens — identical to the homepage so the two pages feel like one site. */
+        :root {
+            --font-display: 'Bricolage Grotesque', 'Segoe UI', sans-serif;
+            --font-body: 'IBM Plex Sans', 'Segoe UI', sans-serif;
+            --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+            --bg:#f5f7fb; --bg-grid:rgba(30,60,120,0.05); --surface:#ffffff; --surface-2:#eef2f8;
+            --text:#131a26; --text-muted:#5b6675; --border:#e2e8f1; --border-strong:#cdd7e6;
+            --accent:#2563eb; --accent-ink:#1d4ed8; --accent-contrast:#ffffff; --accent-soft:rgba(37,99,235,0.10); --accent-glow:rgba(37,99,235,0.16);
+            --shadow-sm:0 1px 2px rgba(20,28,45,0.06),0 2px 6px rgba(20,28,45,0.04);
+            --shadow-md:0 6px 18px rgba(20,28,45,0.09),0 2px 6px rgba(20,28,45,0.05);
+            --shadow-lg:0 18px 48px rgba(20,28,45,0.16);
+            --radius-lg:16px; --radius-md:11px; --radius-sm:8px; --maxw:1080px; --ease:cubic-bezier(0.22,1,0.36,1);
+        }
+        [data-theme="dark"] {
+            --bg:#0a0f1a; --bg-grid:rgba(120,160,230,0.055); --surface:#111827; --surface-2:#161f33;
+            --text:#eaf0fa; --text-muted:#93a0b5; --border:#1f2a40; --border-strong:#2b3852;
+            --accent:#5b9bff; --accent-ink:#82b4ff; --accent-contrast:#07101f; --accent-soft:rgba(91,155,255,0.15); --accent-glow:rgba(91,155,255,0.18);
+            --shadow-sm:0 1px 2px rgba(0,0,0,0.4); --shadow-md:0 8px 24px rgba(0,0,0,0.45); --shadow-lg:0 24px 60px rgba(0,0,0,0.6);
+        }
+        *,*::before,*::after { box-sizing:border-box; }
+        html { scroll-behavior:smooth; }
         body {
-            margin: 0;
-            padding: 0;
-            background-color: #e9ecef; /* A soft grey background makes the white certificate pop */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh; /* Forces the body to be exactly the height of the screen */
-            font-family: Arial, sans-serif;
+            margin:0; font-family:var(--font-body); color:var(--text); background-color:var(--bg);
+            background-image:radial-gradient(var(--bg-grid) 1px, transparent 1px); background-size:26px 26px;
+            line-height:1.65; font-size:17px; -webkit-font-smoothing:antialiased;
+            transition:background-color 0.4s var(--ease), color 0.4s var(--ease); min-height:100vh;
+            display:flex; flex-direction:column;
         }
+        img { max-width:100%; display:block; }
+        a { color:var(--accent-ink); }
+        ::selection { background:var(--accent); color:var(--accent-contrast); }
+        :focus-visible { outline:2.5px solid var(--accent); outline-offset:3px; border-radius:4px; }
+        .container { max-width:var(--maxw); margin:0 auto; padding:0 clamp(1.2rem,4vw,2.5rem); width:100%; }
 
-        .cert-wrapper {
-            text-align: center;
-            padding: 20px;
+        /* Nav */
+        .nav { position:sticky; top:0; z-index:100; background:color-mix(in srgb,var(--bg) 82%,transparent);
+               backdrop-filter:saturate(160%) blur(14px); -webkit-backdrop-filter:saturate(160%) blur(14px); border-bottom:1px solid var(--border); }
+        .nav-inner { max-width:var(--maxw); margin:0 auto; padding:0.7rem clamp(1.2rem,4vw,2.5rem); display:flex; align-items:center; gap:1rem; }
+        .brand { display:inline-flex; align-items:center; gap:0.6rem; text-decoration:none; color:var(--text); font-family:var(--font-display); font-weight:700; flex-shrink:0; }
+        .monogram { width:34px; height:34px; border-radius:9px; background:var(--accent); color:var(--accent-contrast); display:grid; place-items:center; font-family:var(--font-mono); font-weight:700; font-size:0.85rem; box-shadow:var(--shadow-sm); }
+        .brand-name { font-size:1.02rem; }
+        .nav-links { list-style:none; display:flex; align-items:center; gap:0.35rem; margin:0; padding:0; flex:1; justify-content:center; overflow-x:auto; scrollbar-width:none; }
+        .nav-links::-webkit-scrollbar { display:none; }
+        .nav-links a { color:var(--text-muted); text-decoration:none; font-size:0.92rem; font-weight:500; padding:0.5rem 0.7rem; border-radius:var(--radius-sm); white-space:nowrap; transition:color 0.2s var(--ease), background-color 0.2s var(--ease); }
+        .nav-links a:hover { color:var(--text); background:var(--surface-2); }
+        .nav-links a.active { color:var(--accent-ink); }
+        .nav-actions { display:flex; align-items:center; gap:0.55rem; flex-shrink:0; }
+        .theme-toggle { width:38px; height:38px; border:1px solid var(--border-strong); background:var(--surface); color:var(--text); border-radius:10px; cursor:pointer; display:grid; place-items:center; transition:border-color 0.2s var(--ease), transform 0.2s var(--ease); }
+        .theme-toggle:hover { transform:translateY(-1px); border-color:var(--accent); }
+        .theme-toggle svg { width:19px; height:19px; }
+        .theme-toggle .icon-moon { display:none; }
+        [data-theme="dark"] .theme-toggle .icon-sun { display:none; }
+        [data-theme="dark"] .theme-toggle .icon-moon { display:block; }
+
+        /* Page header */
+        .page-head { padding:clamp(3rem,7vw,5rem) 0 clamp(1.5rem,3vw,2rem); }
+        .eyebrow { font-family:var(--font-mono); font-size:0.78rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--accent-ink); display:inline-flex; align-items:center; gap:0.6rem; margin:0 0 1rem; }
+        .eyebrow::before { content:""; width:26px; height:1.5px; background:var(--accent); display:inline-block; }
+        h1 { font-family:var(--font-display); font-weight:800; font-size:clamp(2.2rem,5.5vw,3.4rem); line-height:1.02; letter-spacing:-0.03em; margin:0 0 0.8rem; }
+        .page-head p { color:var(--text-muted); max-width:60ch; margin:0; font-size:1.08rem; }
+
+        /* Buttons */
+        .btn { display:inline-flex; align-items:center; gap:0.5rem; font-family:var(--font-body); font-weight:600; font-size:0.95rem; padding:0.7rem 1.15rem; border-radius:var(--radius-md); text-decoration:none; cursor:pointer; border:1px solid transparent; transition:transform 0.2s var(--ease), box-shadow 0.2s var(--ease), border-color 0.2s var(--ease), color 0.2s var(--ease); }
+        .btn svg { width:17px; height:17px; }
+        .btn-primary { background:var(--accent); color:var(--accent-contrast); box-shadow:var(--shadow-sm); }
+        .btn-primary:hover { transform:translateY(-2px); box-shadow:var(--shadow-md); }
+        .btn-outline { background:var(--surface); color:var(--text); border-color:var(--border-strong); }
+        .btn-outline:hover { transform:translateY(-2px); border-color:var(--accent); color:var(--accent-ink); }
+
+        /* Certificate card */
+        .cert-section { padding:0 0 clamp(3rem,7vw,5rem); }
+        .cert-card { background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-lg); overflow:hidden; box-shadow:var(--shadow-sm); display:grid; grid-template-columns:1.1fr 1fr; transition:transform 0.35s var(--ease), box-shadow 0.35s var(--ease), border-color 0.35s var(--ease); }
+        .cert-card:hover { transform:translateY(-4px); box-shadow:var(--shadow-lg); border-color:var(--border-strong); }
+        .cert-image { background:var(--surface-2); display:grid; place-items:center; padding:1.4rem; border-right:1px solid var(--border); }
+        .cert-image a { display:block; width:100%; cursor:zoom-in; }
+        .cert-image img { width:100%; border-radius:var(--radius-md); box-shadow:var(--shadow-md); transition:transform 0.3s var(--ease); }
+        .cert-image a:hover img { transform:scale(1.02); }
+        .cert-body { padding:clamp(1.6rem,3vw,2.4rem); }
+        .cert-badge { display:inline-flex; align-items:center; gap:0.5rem; font-family:var(--font-mono); font-size:0.74rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--accent-ink); background:var(--accent-soft); border:1px solid var(--accent); padding:0.3rem 0.7rem; border-radius:999px; margin-bottom:1rem; }
+        .cert-badge .dot { width:7px; height:7px; border-radius:50%; background:var(--accent); }
+        .cert-title { font-family:var(--font-display); font-weight:700; font-size:clamp(1.4rem,3vw,1.9rem); letter-spacing:-0.015em; margin:0 0 0.3rem; line-height:1.15; }
+        .cert-issuer { color:var(--text-muted); margin:0 0 0.3rem; }
+        .cert-note { font-family:var(--font-mono); font-size:0.78rem; color:var(--text-muted); margin:0 0 1.5rem; }
+        .cert-meta { display:grid; grid-template-columns:1fr 1fr; gap:1rem 1.5rem; margin-bottom:1.6rem; }
+        .cert-meta .k { font-family:var(--font-mono); font-size:0.7rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--text-muted); display:block; margin-bottom:0.15rem; }
+        .cert-meta .v { font-weight:600; }
+        .cert-meta .v.mono { font-family:var(--font-mono); font-weight:500; letter-spacing:0.02em; }
+        .cert-skills { display:flex; flex-wrap:wrap; gap:0.45rem; margin-bottom:1.6rem; }
+        .tag { font-family:var(--font-mono); font-size:0.76rem; color:var(--text-muted); background:var(--surface-2); border:1px solid var(--border); padding:0.28rem 0.6rem; border-radius:7px; }
+        .cert-actions { display:flex; flex-wrap:wrap; gap:0.7rem; }
+
+        /* Footer */
+        .footer { border-top:1px solid var(--border); background:var(--surface); margin-top:auto; }
+        .footer-fine { text-align:center; padding:1.4rem; font-family:var(--font-mono); font-size:0.76rem; color:var(--text-muted); letter-spacing:0.02em; }
+
+        [data-reveal] { opacity:0; transform:translateY(22px); transition:opacity 0.7s var(--ease), transform 0.7s var(--ease); }
+        [data-reveal].is-visible { opacity:1; transform:none; }
+
+        @media (max-width:760px) {
+            .cert-card { grid-template-columns:1fr; }
+            .cert-image { border-right:none; border-bottom:1px solid var(--border); }
+            .brand-name { display:none; }
         }
-
-        .cert-wrapper img {
-            max-width: 90vw;  /* Prevents it from being wider than the screen */
-            max-height: 85vh; /* Prevents it from being taller than the screen */
-            object-fit: contain;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2); /* Gives it a professional floating drop-shadow */
-            border: 1px solid #ccc;
-            background-color: white; 
+        @media (prefers-reduced-motion: reduce) {
+            *,*::before,*::after { transition-duration:0.001ms !important; animation-duration:0.001ms !important; }
+            [data-reveal] { opacity:1; transform:none; }
         }
-
-        .back-btn {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 10px 20px;
-            background-color: #333;
-            color: white;
-            text-decoration: none;
-            border-radius: 4px;
-            transition: background-color 0.2s ease;
-        }
-
-        .back-btn:hover {
-            background-color: #555;
+        @media print {
+            .nav { display:none !important; }
+            body { background:#fff; color:#000; }
+            .cert-card { box-shadow:none; border:1px solid #ccc; }
+            [data-reveal] { opacity:1 !important; transform:none !important; }
         }
     </style>
 </head>
 <body>
+    <nav class="nav" aria-label="Primary">
+        <div class="nav-inner">
+            <a class="brand" href="index.html" aria-label="Logan Thomas — home">
+                <span class="monogram" aria-hidden="true">LT</span>
+                <span class="brand-name">Logan Thomas</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#education">Education</a></li>
+                <li><a href="index.html#skills">Skills</a></li>
+                <li><a href="index.html#experience">Experience</a></li>
+                <li><a href="index.html#projects">Projects</a></li>
+                <li><a href="certification.html" class="active" aria-current="page">Certification</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch color theme" title="Switch theme">
+                    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M19.1 4.9l-1.4 1.4M6.3 17.7l-1.4 1.4"/></svg>
+                    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+                </button>
+            </div>
+        </div>
+    </nav>
 
-    <div class="cert-wrapper">
-        <img src="CSWA Certification Screenshot.png" alt="Certified SolidWorks Associate (CSWA) Certificate">
-        <br>
-        <a href="index.html" class="back-btn">Back to Portfolio</a>
-    </div>
+    <main>
+        <header class="page-head">
+            <div class="container">
+                <p class="eyebrow" data-reveal>Credentials</p>
+                <h1 data-reveal>Certifications</h1>
+                <p data-reveal>Verified, industry-recognized credentials that back up the design skills used across my projects.</p>
+            </div>
+        </header>
 
+        <section class="cert-section">
+            <div class="container">
+                <article class="cert-card" data-reveal>
+                    <div class="cert-image">
+                        <!-- Click opens the full PDF certificate -->
+                        <a href="CSWA Exam Certificate.pdf" target="_blank" rel="noopener" aria-label="Open the full CSWA certificate (PDF)">
+                            <img src="CSWA Certification Screenshot.png"
+                                 alt="Certified SOLIDWORKS Associate — CAD Design certificate awarded to Logan Thomas"
+                                 loading="lazy" decoding="async">
+                        </a>
+                    </div>
+                    <div class="cert-body">
+                        <span class="cert-badge"><span class="dot" aria-hidden="true"></span> Active Credential</span>
+                        <h2 class="cert-title">SOLIDWORKS CAD Design Associate</h2>
+                        <p class="cert-issuer">Certified SOLIDWORKS Associate (CSWA) · Dassault Systèmes</p>
+                        <p class="cert-note">Academic exam · University of California, Los Angeles</p>
+
+                        <div class="cert-meta">
+                            <div>
+                                <span class="k">Issued</span>
+                                <span class="v">November 22, 2025</span>
+                            </div>
+                            <div>
+                                <span class="k">Credential ID</span>
+                                <span class="v mono">C-DGUFJNMHRX</span>
+                            </div>
+                        </div>
+
+                        <div class="cert-skills">
+                            <span class="tag">Part Modeling</span>
+                            <span class="tag">Assemblies</span>
+                            <span class="tag">Engineering Drawings</span>
+                            <span class="tag">Sketch Relations</span>
+                            <span class="tag">Mass Properties</span>
+                        </div>
+
+                        <div class="cert-actions">
+                            <a class="btn btn-primary" href="CSWA Exam Certificate.pdf" target="_blank" rel="noopener">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></svg>
+                                View certificate (PDF)
+                            </a>
+                            <a class="btn btn-outline" href="index.html#skills">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+                                Back to portfolio
+                            </a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-fine">© 2026 Logan Thomas · Mechanical Engineering · UCLA</div>
+    </footer>
+
+    <script>
+        /* Theme toggle — shared behavior with the homepage. */
+        (function () {
+            var btn = document.getElementById('themeToggle');
+            var root = document.documentElement;
+            function store(v){ try { localStorage.setItem('theme', v); } catch (e) {} }
+            function sync(){ var d = root.getAttribute('data-theme')==='dark'; btn.setAttribute('aria-label', d?'Switch to light theme':'Switch to dark theme'); btn.setAttribute('aria-pressed', String(d)); }
+            btn.addEventListener('click', function(){ var n = root.getAttribute('data-theme')==='dark'?'light':'dark'; root.setAttribute('data-theme', n); store(n); sync(); });
+            sync();
+        })();
+        /* Reveal-on-scroll */
+        (function () {
+            var items = document.querySelectorAll('[data-reveal]');
+            if (!('IntersectionObserver' in window)) { items.forEach(function(el){ el.classList.add('is-visible'); }); return; }
+            var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('is-visible'); io.unobserve(e.target); } }); }, { threshold:0.12 });
+            items.forEach(function(el){ io.observe(el); });
+        })();
+    </script>
 </body>
 </html>
