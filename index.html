@@ -29,11 +29,11 @@
     <meta name="twitter:image" content="https://loganrthomas.github.io/social-preview.png">
 
     <!-- The browser-tab / address-bar color, switches with the theme -->
-    <meta name="theme-color" content="#faf8f3" media="(prefers-color-scheme: light)">
-    <meta name="theme-color" content="#0c100e" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#f5f7fb" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0a0f1a" media="(prefers-color-scheme: dark)">
 
     <!-- Inline SVG favicon: a small "LT" monogram. No extra file needed. -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%231a7a4b'/><text x='32' y='45' font-family='monospace' font-size='30' font-weight='700' text-anchor='middle' fill='white'>LT</text></svg>">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%232563eb'/><text x='32' y='45' font-family='monospace' font-size='30' font-weight='700' text-anchor='middle' fill='white'>LT</text></svg>">
 
     <!-- Fonts: Bricolage Grotesque (display) + IBM Plex Sans (body) + IBM Plex Mono (labels) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -70,24 +70,24 @@
             --font-body: 'IBM Plex Sans', 'Segoe UI', sans-serif;
             --font-mono: 'IBM Plex Mono', ui-monospace, 'Courier New', monospace;
 
-            /* Light theme (default) */
-            --bg:            #faf8f3;
-            --bg-grid:       rgba(20, 50, 35, 0.045);
+            /* Light theme (default) — blueprint blue */
+            --bg:            #f5f7fb;
+            --bg-grid:       rgba(30, 60, 120, 0.05);
             --surface:       #ffffff;
-            --surface-2:     #f2f0e8;
-            --text:          #161d18;
-            --text-muted:    #59635c;
-            --border:        #e6e3d8;
-            --border-strong: #d6d2c4;
-            --accent:        #1a7a4b;
-            --accent-ink:    #0f5232;  /* higher-contrast accent for small text */
+            --surface-2:     #eef2f8;
+            --text:          #131a26;
+            --text-muted:    #5b6675;
+            --border:        #e2e8f1;
+            --border-strong: #cdd7e6;
+            --accent:        #2563eb;
+            --accent-ink:    #1d4ed8;  /* higher-contrast accent for small text */
             --accent-contrast:#ffffff; /* text/icon color when sitting on accent */
-            --accent-soft:   rgba(26, 122, 75, 0.10);
-            --accent-glow:   rgba(26, 122, 75, 0.14);
+            --accent-soft:   rgba(37, 99, 235, 0.10);
+            --accent-glow:   rgba(37, 99, 235, 0.16);
 
-            --shadow-sm: 0 1px 2px rgba(20, 30, 24, 0.06), 0 2px 6px rgba(20, 30, 24, 0.04);
-            --shadow-md: 0 6px 18px rgba(20, 30, 24, 0.08), 0 2px 6px rgba(20, 30, 24, 0.05);
-            --shadow-lg: 0 18px 48px rgba(20, 30, 24, 0.14);
+            --shadow-sm: 0 1px 2px rgba(20, 28, 45, 0.06), 0 2px 6px rgba(20, 28, 45, 0.04);
+            --shadow-md: 0 6px 18px rgba(20, 28, 45, 0.09), 0 2px 6px rgba(20, 28, 45, 0.05);
+            --shadow-lg: 0 18px 48px rgba(20, 28, 45, 0.16);
 
             --radius-lg: 16px;
             --radius-md: 11px;
@@ -97,19 +97,19 @@
         }
 
         [data-theme="dark"] {
-            --bg:            #0c100e;
-            --bg-grid:       rgba(120, 210, 165, 0.05);
-            --surface:       #131815;
-            --surface-2:     #19201b;
-            --text:          #ecf1ec;
-            --text-muted:    #93a097;
-            --border:        #232b25;
-            --border-strong: #2e372f;
-            --accent:        #46c485;
-            --accent-ink:    #6fd7a4;
-            --accent-contrast:#07120c;
-            --accent-soft:   rgba(70, 196, 133, 0.14);
-            --accent-glow:   rgba(70, 196, 133, 0.16);
+            --bg:            #0a0f1a;
+            --bg-grid:       rgba(120, 160, 230, 0.055);
+            --surface:       #111827;
+            --surface-2:     #161f33;
+            --text:          #eaf0fa;
+            --text-muted:    #93a0b5;
+            --border:        #1f2a40;
+            --border-strong: #2b3852;
+            --accent:        #5b9bff;
+            --accent-ink:    #82b4ff;
+            --accent-contrast:#07101f;
+            --accent-soft:   rgba(91, 155, 255, 0.15);
+            --accent-glow:   rgba(91, 155, 255, 0.18);
 
             --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
             --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.45);
@@ -654,7 +654,7 @@
             display: none;
             place-items: center;
             padding: clamp(1rem, 4vw, 3rem);
-            background: rgba(8, 12, 10, 0.82);
+            background: rgba(7, 11, 20, 0.85);
             backdrop-filter: blur(6px);
             -webkit-backdrop-filter: blur(6px);
         }
@@ -669,7 +669,7 @@
             box-shadow: var(--shadow-lg);
         }
         .lightbox-cap {
-            color: #e7eee9;
+            color: #e8eef7;
             font-size: 0.9rem;
             margin-top: 1rem;
             max-width: 60ch;
@@ -1210,12 +1210,12 @@
                 </a>
                 <!-- GitHub: this links to your profile. Optional — see the setup notes
                      on whether to keep it. To remove, delete this whole <a> block. -->
-                <a class="icon-link" href="https://github.com/loganrthomas" target="_blank" rel="noopener" aria-label="GitHub profile" title="GitHub">
+                <a class="icon-link" href="https://github.com/LoganRThomas" target="_blank" rel="noopener" aria-label="GitHub profile" title="GitHub">
                     <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49 0-.24-.01-.88-.01-1.73-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.27 2.75 1.05a9.36 9.36 0 0 1 5 0c1.91-1.32 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.81-4.57 5.06.36.32.68.94.68 1.9 0 1.37-.01 2.48-.01 2.82 0 .27.18.6.69.49A10.02 10.02 0 0 0 22 12.25C22 6.58 17.52 2 12 2z"/></svg>
                 </a>
             </div>
         </div>
-        <div class="footer-fine">© 2026 Logan Thomas · Designed &amp; built from scratch</div>
+        <div class="footer-fine">© 2026 Logan Thomas · Mechanical Engineering · UCLA</div>
     </footer>
 
     <!-- ===================== LIGHTBOX ===================== -->
