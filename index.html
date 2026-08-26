@@ -9,7 +9,7 @@
          >>> EDIT the two URLs marked below for your live domain. <<<
          ============================================================ -->
     <title>Logan Thomas — Mechanical Engineering</title>
-    <meta name="description" content="Logan Thomas is a UCLA mechanical engineering student building real hardware — ferrobotic test platforms, autonomous robots, and precision-fabricated systems. Open to Summer 2027 internships in California.">
+    <meta name="description" content="Logan Thomas is a UCLA mechanical engineering student building real hardware: a manned research submersible, a ferrobotic viral testing platform, and mechanisms taken from statics through FEA to a fabricated part. Open to Summer 2027 internships in California.">
     <meta name="author" content="Logan Thomas">
 
     <!-- >>> EDIT: your live site URL (no trailing slash) <<< -->
@@ -17,13 +17,13 @@
 
     <meta property="og:type" content="website">
     <meta property="og:title" content="Logan Thomas — Mechanical Engineering">
-    <meta property="og:description" content="UCLA mechanical engineering student building real hardware. Open to Summer 2027 internships in California.">
+    <meta property="og:description" content="UCLA mechanical engineering student. Design, analysis, and test on real hardware. Open to Summer 2027 internships in California.">
     <meta property="og:url" content="https://loganrthomas.github.io">
     <!-- >>> EDIT: full URL to the share image <<< -->
     <meta property="og:image" content="https://loganrthomas.github.io/social-preview3.png">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Logan Thomas — Mechanical Engineering">
-    <meta name="twitter:description" content="UCLA mechanical engineering student building real hardware. Open to Summer 2027 internships in California.">
+    <meta name="twitter:description" content="UCLA mechanical engineering student. Design, analysis, and test on real hardware. Open to Summer 2027 internships in California.">
     <meta name="twitter:image" content="https://loganrthomas.github.io/social-preview3.png">
 
     <meta name="theme-color" content="#f5f7fb" media="(prefers-color-scheme: light)">
@@ -532,11 +532,11 @@
                         <p class="hero-top">Mechanical Engineering · UCLA · Alameda, CA</p>
                         <h1>Logan Thomas</h1>
                         <div class="dim-line" aria-hidden="true"><span class="cap"></span><span class="bar"></span><span class="cap"></span></div>
-                        <p class="lede">Focused on <strong>mechanism design and precision hardware</strong> — the full loop from CAD to a manufacturable part to a tested build.</p>
+                        <p class="lede">Design, analysis, and test on hardware that has to work. <strong>From first-principles statics through FEA to a part a machinist can actually make.</strong></p>
                         <dl class="spec">
                             <div><dt>Status</dt><dd>Open to Summer 2027 internships</dd></div>
                             <div><dt>Based</dt><dd>California</dd></div>
-                            <div><dt>Focus</dt><dd>Mechanical design · Robotics · Electronics</dd></div>
+                            <div><dt>Focus</dt><dd>Mechanical design · Analysis &amp; FEA · Build &amp; test</dd></div>
                         </dl>
                         <div class="hero-cta">
                             <a class="btn btn-primary" href="LoganThomas_Resume.pdf" target="_blank" rel="noopener">
@@ -562,7 +562,7 @@
                 </div>
 
                 <div class="about-block" data-reveal>
-                    <p>UCLA mechanical engineering student focused on mechanism design and precision hardware — the full loop from CAD to a manufacturable part to a tested build. Recent work: a manned research submersible at DOER Marine, precision enclosures at UCLA's I²BL, and a self-built machine-learning pipeline predicting microfluidic droplet behavior from device geometry.</p>
+                    <p>UCLA mechanical engineering student working the full loop from first-principles analysis to a manufacturable part to a tested build. Recent work: structural and thermal analysis on a manned research submersible at DOER Marine, precision enclosures and mechanism design at UCLA's I²BL, a self-built machine-learning pipeline predicting microfluidic droplet behavior from device geometry, and a spring-deployed laptop stand carried from symbolic statics through FEA and materials testing.</p>
                     <p>Headed toward robotics, aerospace, energy, and advanced R&amp;D. Seeking a Summer 2027 engineering internship in California.</p>
                 </div>
             </div>
@@ -658,14 +658,17 @@
                     <p class="card-sub">Manned Research Submersible</p>
 
                     <div class="tags spaced">
-                        <span class="tag">Simulink / Simscape</span><span class="tag">MATLAB</span><span class="tag">Thermal Testing</span><span class="tag">SolidWorks</span><span class="tag">DFM</span><span class="tag">Procurement Drawings</span><span class="tag">Root Cause Analysis</span>
+                        <span class="tag">SolidWorks</span><span class="tag">FEA (SolidWorks Simulation)</span><span class="tag">Simulink / Simscape</span><span class="tag">MATLAB</span><span class="tag">Thermal Testing</span><span class="tag">GD&amp;T / Tolerancing</span><span class="tag">DFM</span><span class="tag">Root Cause Analysis</span>
                     </div>
 
                     <ul class="details">
+                        <li><strong>Deployment Rig Design:</strong> Took a moonpool transducer deployment rig from rough concept to a manufacturable SolidWorks assembly, specifying lead screw, bearing, and guide-shaft hardware and resolving mating constraints.</li>
+                        <li><strong>Structural Analysis &amp; Load Path:</strong> Raised a bending-stress question on the rig's load-bearing frame through hand calculation, then built and compared three beam configurations in FEA under a calculated ~100 lb load, cutting peak stress from 6.57 to 1.70 ksi.</li>
                         <li><strong>Thermal Test Rig &amp; Instrumentation:</strong> Designed and built an instrumented test rig to benchmark two battery-wall cooling designs, iterating a foil-and-foam camera enclosure to remove thermal-reflection artifacts across 8 controlled heating trials.</li>
                         <li><strong>Thermal Model Calibration:</strong> Performed initial calibration of a Simscape/MATLAB heat-transfer model against trial data, tuning the convection coefficient (50 → 70 W/m²K) and adding a neoprene radiation layer to align simulated and measured cooling rates.</li>
-                        <li><strong>Design for Manufacturability:</strong> Created SolidWorks stock-layout assemblies and company-standard procurement drawings for HDPE parts, using custom reference planes to enforce 0.25″ waterjet clearance and minimize material waste.</li>
-                        <li><strong>Electrical Audit &amp; Documentation:</strong> Audited nominal voltage, current, and power specs for all major electrical components against the vehicle schematic, catching misinput voltage errors, and authored the formal test procedure for the thermal study.</li>
+                        <li><strong>Interference Sweep &amp; Tolerancing:</strong> Ran interference detection across a vendor-supplied assembly, catching a real geometric interference in an outsourced part and resolving it by shifting the nominal dimension rather than adding a nonstandard tolerance callout.</li>
+                        <li><strong>Machinist Drawing Package:</strong> Produced the full machinist drawing package for a battery enclosure assembly, applying standard callout conventions and tolerancing dimensions for machinability while preserving fit between mating parts.</li>
+                        <li><strong>Test Procedure &amp; Verification:</strong> Authored the formal thermal test procedure defining setup, active phases, and per-trial data logging for full repeatability, and verified component voltage and power specifications against the vehicle schematic.</li>
                     </ul>
                 </article>
 
@@ -732,10 +735,32 @@
                     <span class="idx">SHEET 04 / 04</span>
                 </div>
 
-                <!-- X1 Robotics -->
+                <!-- Self-Deploying Laptop Stand -->
                 <article class="card" data-reveal>
                     <div class="card-topline">
                         <span class="pn">PRJ-01</span>
+                        <span>Jun 2026 &ndash; Present</span>
+                    </div>
+                    <h3 class="card-title">Self-Deploying Laptop Stand</h3>
+                    <p class="card-sub">Personal Project &middot; Mechanism Design &middot; In Progress</p>
+
+                    <div class="tags spaced">
+                        <span class="tag">SolidWorks</span><span class="tag">FEA (SolidWorks Simulation)</span><span class="tag">Statics</span><span class="tag">PETG / FDM</span><span class="tag">Design of Experiments</span><span class="tag">Materials Testing</span><span class="tag">DFM</span>
+                    </div>
+
+                    <ul class="details">
+                        <li><strong>First-Principles Statics:</strong> Derived the linkage statics symbolically before touching software, proving by contradiction that a parallelogram linkage has no equilibrium at any deployed angle, identifying the hard stop, not the linkage or spring, as the primary load path. Re-derived the result via a second independent free-body decomposition as a check.</li>
+                        <li><strong>FEA Model &amp; Debugging:</strong> Built a finite element model in SolidWorks Simulation with no prior FEA experience: pin connectors at revolute joints, a non-bonded compression-only contact at the stop (reasoned from the hand analysis), distributed pressure and gravity. Diagnosed an unconstrained-body solver instability, resolved a large-displacement/pin-connector incompatibility, and ran mesh convergence to confirm the stress concentration was real, not a meshing artifact (13.8 MPa peak, FoS 3.6).</li>
+                        <li><strong>Load-Support Architecture:</strong> Redesigned the load support from hard stops in the linkages to a drop-down compression flap, recognizing that a single-arc linkage cannot lock against a passive stop without traveling past dead center. Instead of the platform swinging over the top to seat on a far-side stop, the flap drops into place at the working angle, playing to PETG's compressive strength instead of loading it in bending where it creeps.</li>
+                        <li><strong>Mass Reduction &amp; Ribbing:</strong> Cut a platform's mass 46% (566 to 308 g) via an FEA-driven hollowing-and-ribbing iteration; when hollowing introduced excess flex, applied injection-molding rib principles (height-dominant stiffness, ribs thinner than parent wall, concave root fillets) to make it 3&times; stiffer than its unribbed intermediate (2.34 to 0.78 mm), recognizing deflection, not stress, as the governing metric.</li>
+                        <li><strong>Materials Testing:</strong> Reasoned through FDM anisotropic strength from first principles, then ran a 12-sample controlled bend test (4 infill patterns &times; 3 densities) on printed PETG. Quantified measurement uncertainty at &plusmn;1.6% before claiming significance, found infill pattern affects stiffness ~3&times; more than density (13% vs 3.6%), and thickened outer walls rather than raising infill.</li>
+                    </ul>
+                </article>
+
+                <!-- X1 Robotics -->
+                <article class="card" data-reveal>
+                    <div class="card-topline">
+                        <span class="pn">PRJ-02</span>
                         <span>Sep 2025 – Present</span>
                     </div>
                     <h3 class="card-title">Internal Arm Engineer <span class="card-org">· X1 Robotics</span></h3>
@@ -774,7 +799,7 @@
                 <!-- Electric Guitar -->
                 <article class="card" data-reveal>
                     <div class="card-topline">
-                        <span class="pn">PRJ-02</span>
+                        <span class="pn">PRJ-03</span>
                         <span>Jun 2024 – Present</span>
                     </div>
                     <h3 class="card-title">Electric Guitar Fabrication</h3>
@@ -829,7 +854,7 @@
                 <!-- COSMOS -->
                 <article class="card" data-reveal>
                     <div class="card-topline">
-                        <span class="pn">PRJ-03</span>
+                        <span class="pn">PRJ-04</span>
                         <span>Jul 2024 – Aug 2024</span>
                     </div>
                     <h3 class="card-title">Mechatronics &amp; Aerospace <span class="card-org">· COSMOS at UCLA</span></h3>
