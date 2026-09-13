@@ -387,11 +387,17 @@
         .gallery .shot:hover::after, .gallery .shot:focus-visible::after { opacity: 1; }
 
         /* --- Scoped gallery variants (global .gallery .shot 4:3 rule above is untouched) --- */
-        /* Square shots: used by the DOER mask renders and the laptop stand prototype photo. */
+        /* Square shots: used by the DOER mask renders. */
         .gallery .shot.is-square { aspect-ratio: 1 / 1; }
-        /* Letterboxed shots: show the whole frame (e.g. FEA plots whose color scale must not be cropped). */
-        .gallery .shot.is-contain { aspect-ratio: 16 / 10; }
-        .gallery .shot.is-contain img { object-fit: contain; background: var(--surface-2); }
+        /* Contained shots: show the whole frame instead of cropping it.
+           The matte is white because these are CAD renders and FEA plots that already
+           sit on white, so the letterbox blends into the artwork instead of framing it.
+           Without this the bars read as a misaligned border, and they differ per image
+           since no two plots share an aspect ratio. */
+        .gallery .shot.is-fit { background: #ffffff; }
+        .gallery .shot.is-fit img { object-fit: contain; background: #ffffff; }
+        /* Wider box for the FEA plots, whose color scale must not be cropped. */
+        .gallery .shot.is-wide { aspect-ratio: 16 / 10; }
 
         /* Video cell: no zoom-in cursor or expand overlay, since it plays in place. */
         .gallery .shot.is-video { aspect-ratio: 4 / 3; cursor: default; }
@@ -804,15 +810,15 @@
                             <figcaption><strong>Deployment Sequence:</strong> Released from stowed, the spring drives the platform up; setting the laptop down seats the flap into its locked position.</figcaption>
                         </figure>
                         <figure>
-                            <div class="shot is-square"><img src="Prototype.jpeg" alt="Printed laptop stand prototype, deployed" loading="lazy" decoding="async"></div>
+                            <div class="shot"><img src="Prototype.jpeg" alt="Printed laptop stand prototype, deployed" loading="lazy" decoding="async"></div>
                             <figcaption><strong>Deployed Assembly:</strong> The printed stand in its working position, with the drop-down flap seated and carrying the laptop load in compression rather than bending.</figcaption>
                         </figure>
                         <figure>
-                            <div class="shot"><img src="Isometric 1.png" alt="CAD model of the laptop stand, deployed isometric view" loading="lazy" decoding="async"></div>
+                            <div class="shot is-fit"><img src="Isometric 1.png" alt="CAD model of the laptop stand, deployed isometric view" loading="lazy" decoding="async"></div>
                             <figcaption><strong>Deployed Geometry:</strong> CAD model of the full assembly at its working angle, where the parallelogram linkage keeps the platform level throughout its travel.</figcaption>
                         </figure>
                         <figure>
-                            <div class="shot"><img src="Stowed 1.png" alt="CAD model of the laptop stand, stowed flat" loading="lazy" decoding="async"></div>
+                            <div class="shot is-fit"><img src="Stowed 1.png" alt="CAD model of the laptop stand, stowed flat" loading="lazy" decoding="async"></div>
                             <figcaption><strong>Stowed State:</strong> The same assembly collapsed flat and latched at the front, sized to store without disassembly.</figcaption>
                         </figure>
 
@@ -821,11 +827,11 @@
                             <p class="card-sub cmp-note">The same load case run on the first design and the final one.</p>
                             <div class="cmp-grid">
                                 <figure>
-                                    <div class="shot is-contain"><img src="Displacement 1.png" alt="SolidWorks displacement plot, first design iteration" loading="lazy" decoding="async"></div>
+                                    <div class="shot is-wide is-fit"><img src="Displacement 1.png" alt="SolidWorks displacement plot, first design iteration" loading="lazy" decoding="async"></div>
                                     <figcaption><strong>Baseline Displacement:</strong> First iteration under load, carrying the platform on a linkage-integral hard stop. Peak resultant displacement near 2 mm.</figcaption>
                                 </figure>
                                 <figure>
-                                    <div class="shot is-contain"><img src="Displacement 2.png" alt="SolidWorks displacement plot, final design" loading="lazy" decoding="async"></div>
+                                    <div class="shot is-wide is-fit"><img src="Displacement 2.png" alt="SolidWorks displacement plot, final design" loading="lazy" decoding="async"></div>
                                     <figcaption><strong>Final Displacement:</strong> Peak displacement drops to roughly 0.1 mm. The flagged maximum sits at the latch, which hangs free before the solve rather than deflecting under load.</figcaption>
                                 </figure>
                             </div>
