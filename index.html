@@ -322,6 +322,9 @@
         }
         .card-org { color: var(--accent-ink); }
         .card-sub { font-style: italic; color: var(--text-muted); margin: 0.2rem 0 1rem; }
+        /* Small muted footnotes under a card's bullet list (assumptions, limitations). */
+        .card-note { font-size: 0.86rem; line-height: 1.55; color: var(--text-muted); margin: 1.1rem 0 0; }
+        .card-note strong { color: var(--text); font-weight: 600; }
 
         .card-meta { display: flex; flex-wrap: wrap; gap: 1.1rem 2rem; }
         .card-meta .k { font-family: var(--font-mono); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); display: block; margin-bottom: 0.1rem; }
@@ -382,6 +385,29 @@
             opacity: 0; transition: opacity 0.3s var(--ease); pointer-events: none;
         }
         .gallery .shot:hover::after, .gallery .shot:focus-visible::after { opacity: 1; }
+
+        /* --- Scoped gallery variants (global .gallery .shot 4:3 rule above is untouched) --- */
+        /* Square shots: used by the DOER mask renders and the laptop stand prototype photo. */
+        .gallery .shot.is-square { aspect-ratio: 1 / 1; }
+        /* Letterboxed shots: show the whole frame (e.g. FEA plots whose color scale must not be cropped). */
+        .gallery .shot.is-contain { aspect-ratio: 16 / 10; }
+        .gallery .shot.is-contain img { object-fit: contain; background: var(--surface-2); }
+
+        /* Video cell: no zoom-in cursor or expand overlay, since it plays in place. */
+        .gallery .shot.is-video { aspect-ratio: 4 / 3; cursor: default; }
+        .gallery .shot.is-video::after { content: none; }
+        .gallery .shot.is-video video { width: 100%; height: 100%; object-fit: cover; display: block; background: #000; }
+        /* While playing, the video takes the full gallery width and shows the whole frame. */
+        .gallery figure.video-figure { transition: grid-column 0.3s var(--ease); }
+        .gallery figure.video-figure.is-playing { grid-column: 1 / -1; }
+        .gallery figure.video-figure.is-playing .shot.is-video { aspect-ratio: 16 / 9; }
+        .gallery figure.video-figure.is-playing .shot.is-video video { object-fit: contain; }
+
+        /* Side-by-side comparison block inside a gallery (spans the full grid). */
+        .gallery .cmp-block { grid-column: 1 / -1; }
+        .gallery .cmp-block > .cmp-note { margin: 0 0 0.7rem; }
+        .gallery .cmp-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.85rem; }
+        @media (max-width: 620px) { .gallery .cmp-grid { grid-template-columns: 1fr; } }
         .gallery figcaption { font-size: 0.82rem; color: var(--text-muted); margin-top: 0.5rem; line-height: 1.45; }
         .gallery figcaption strong { color: var(--text); font-weight: 600; }
 
@@ -652,23 +678,44 @@
                 <article class="card" data-reveal>
                     <div class="card-topline">
                         <span class="pn">EXP-01</span>
-                        <span>Jun 2026 – Present</span>
+                        <span>Jun 2026 – Sep 2026</span>
                     </div>
                     <h3 class="card-title">Engineer Intern <span class="card-org">· DOER Marine</span></h3>
                     <p class="card-sub">Manned Research Submersible</p>
 
                     <div class="tags spaced">
-                        <span class="tag">SolidWorks</span><span class="tag">FEA (SolidWorks Simulation)</span><span class="tag">Simulink / Simscape</span><span class="tag">MATLAB</span><span class="tag">Thermal Testing</span><span class="tag">GD&amp;T / Tolerancing</span><span class="tag">DFM</span><span class="tag">Root Cause Analysis</span>
+                        <span class="tag">SolidWorks</span><span class="tag">FEA (SolidWorks Simulation)</span><span class="tag">Simulink / Simscape</span><span class="tag">MATLAB</span><span class="tag">Thermal Testing</span><span class="tag">GD&amp;T / Tolerancing</span><span class="tag">DFM</span><span class="tag">Root Cause Analysis</span><span class="tag">Harness Assembly</span>
+                    </div>
+
+                    <div class="gallery" data-gallery="doer">
+                        <figure>
+                            <div class="shot is-square"><img src="Smask Front.png" alt="Scuba mask CAD model, front left view" loading="lazy" decoding="async"></div>
+                            <figcaption><strong>Surface Continuity:</strong> Scuba mask assembly modeled in compound curvature for the submersible's interior layout, shown without feature lines to read the blended surface transitions.</figcaption>
+                        </figure>
+                        <figure>
+                            <div class="shot is-square"><img src="Smask Back.png" alt="Scuba mask CAD model, rear view" loading="lazy" decoding="async"></div>
+                            <figcaption><strong>Rear Profile:</strong> Back view of the same model, showing how the curved surfaces close out behind the mask body.</figcaption>
+                        </figure>
+                        <figure>
+                            <div class="shot is-square"><img src="Mask Front 2.png" alt="Scuba mask CAD model, front view with feature lines" loading="lazy" decoding="async"></div>
+                            <figcaption><strong>Modeled Complexity:</strong> Front view with feature lines exposed, showing the surface construction required to build the organic geometry.</figcaption>
+                        </figure>
+                        <figure>
+                            <div class="shot is-square"><img src="Mask Right.png" alt="Scuba mask CAD model, front right view with feature lines" loading="lazy" decoding="async"></div>
+                            <figcaption><strong>Curvature Construction:</strong> Three-quarter view with feature lines, showing how the compound curves are carried across the mask face.</figcaption>
+                        </figure>
                     </div>
 
                     <ul class="details">
-                        <li><strong>Deployment Rig Design:</strong> Took a moonpool transducer deployment rig from rough concept to a manufacturable SolidWorks assembly, specifying lead screw, bearing, and guide-shaft hardware and resolving mating constraints.</li>
-                        <li><strong>Structural Analysis &amp; Load Path:</strong> Raised a bending-stress question on the rig's load-bearing frame through hand calculation, then built and compared three beam configurations in FEA under a calculated ~100 lb load, cutting peak stress from 6.57 to 1.70 ksi.</li>
-                        <li><strong>Thermal Test Rig &amp; Instrumentation:</strong> Designed and built an instrumented test rig to benchmark two battery-wall cooling designs, iterating a foil-and-foam camera enclosure to remove thermal-reflection artifacts across 8 controlled heating trials.</li>
-                        <li><strong>Thermal Model Calibration:</strong> Performed initial calibration of a Simscape/MATLAB heat-transfer model against trial data, tuning the convection coefficient (50 → 70 W/m²K) and adding a neoprene radiation layer to align simulated and measured cooling rates.</li>
-                        <li><strong>Interference Sweep &amp; Tolerancing:</strong> Ran interference detection across a vendor-supplied assembly, catching a real geometric interference in an outsourced part and resolving it by shifting the nominal dimension rather than adding a nonstandard tolerance callout.</li>
-                        <li><strong>Machinist Drawing Package:</strong> Produced the full machinist drawing package for a battery enclosure assembly, applying standard callout conventions and tolerancing dimensions for machinability while preserving fit between mating parts.</li>
-                        <li><strong>Test Procedure &amp; Verification:</strong> Authored the formal thermal test procedure defining setup, active phases, and per-trial data logging for full repeatability, and verified component voltage and power specifications against the vehicle schematic.</li>
+                        <li><strong>Deployment Rig Design:</strong> Took a transducer and hydrophone deployment rig from a rough concept CAD to a manufacturable assembly, specifying the acme lead screw at maximum available lead for fast deployment and retrieval, plus bearings, guide shafts, and hand wheel. Resolved the mating and material-compatibility problems, including non-conductive isolation between the aluminum platform and stainless hardware to prevent galvanic corrosion in seawater.</li>
+                        <li><strong>Structural Analysis &amp; Load Path:</strong> After our director of engineering flagged the rig's load-bearing frame as thin, refined the load estimate, ran hand calculations, and taught myself FEA in SolidWorks Simulation to check them. Compared three beam configurations under a calculated ~100 lb load, and closing a gap he identified brought peak stress from 6.57 to 1.70 ksi on an off-the-shelf metric C-channel the shop can buy rather than machine.</li>
+                        <li><strong>Thermal Test Rig &amp; Instrumentation:</strong> Designed and built an instrumented test rig to benchmark two battery-wall cooling designs across 8 controlled heating trials, iterating a foil-and-foam camera enclosure after identifying thermal-reflection artifacts corrupting the measurements. Authored the formal thermal test procedure, which did not previously exist.</li>
+                        <li><strong>Thermal Model Calibration:</strong> Performed initial calibration of a Simscape/MATLAB heat-transfer model against the trial data, tuning the convection coefficient from 50 to 70 W/m²K and adding a neoprene radiation layer to align simulated and measured cooling rates.</li>
+                        <li><strong>Drawings &amp; Manufacturability:</strong> Produced the machinist drawing package for a battery enclosure assembly, toleranced for machinability while preserving fit between mating parts, and created SolidWorks stock-layout assemblies and procurement drawings for HDPE parts using custom reference planes to enforce 0.25″ waterjet clearance.</li>
+                        <li><strong>Interference &amp; Spec Audits:</strong> Ran interference detection across a vendor-supplied assembly, catching a real geometric interference in an outsourced part and resolving it by shifting the nominal dimension rather than adding a nonstandard tolerance callout. Separately audited voltage, current, and power specifications for all major electrical components against the vehicle schematic, catching misinput voltage errors.</li>
+                        <li><strong>Subsea Harness Build &amp; Debug:</strong> Soldered and terminated 8- and 16-pin subsea ethernet and CAN penetrators and RJ-45 ends for an oil-filled pressure test rig, verifying continuity on every conductor and isolation on every pair that should not connect. When the ethernet link would not establish, isolated the fault to the intermediate wiring by removing components one at a time and testing against a known-good direct connection, and found the manufacturer's connector schematic disagreed with the physical wire order in the part. In the pressure campaign that followed, ethernet held through 2,000 PSI while the CAN link dropped near 1,000 PSI and recovered repeatably at the same threshold.</li>
+                        <li><strong>Interior Assembly Integration:</strong> Modeled the organic compound-curve geometry of a scuba mask assembly for the interior layout, and modeled an accumulator tank from a datasheet drawing. Proposed an alternative location after the initial placement did not fit, designed its mounting bracket, and routed the AC system plumbing throughout the interior using 3D sketches and revolves, constrained inside the spherical hull envelope and positioned so the assembly team has accessible points to secure each line.</li>
+                        <li><strong>Knowledge Transfer:</strong> Trained the incoming engineering intern on the part-number log and CAD assembly navigation, walked him through the design decisions behind the battery housing drawings including where fillets or chamfers are easier to machine and where a bilateral tolerance was needed for fit, then had him produce a complete machinist drawing independently.</li>
                     </ul>
                 </article>
 
@@ -739,22 +786,63 @@
                 <article class="card" data-reveal>
                     <div class="card-topline">
                         <span class="pn">PRJ-01</span>
-                        <span>Jun 2026 &ndash; Present</span>
+                        <span>Jun 2026 &ndash; Sep 2026</span>
                     </div>
                     <h3 class="card-title">Self-Deploying Laptop Stand</h3>
-                    <p class="card-sub">Personal Project &middot; Mechanism Design &middot; In Progress</p>
+                    <p class="card-sub">Mechanism Design &middot; 2 mm to 0.1 mm max displacement across iterations</p>
 
                     <div class="tags spaced">
                         <span class="tag">SolidWorks</span><span class="tag">FEA (SolidWorks Simulation)</span><span class="tag">Statics</span><span class="tag">PETG / FDM</span><span class="tag">Design of Experiments</span><span class="tag">Materials Testing</span><span class="tag">DFM</span>
                     </div>
 
+                    <div class="gallery" data-gallery="laptop-stand">
+                        <figure class="video-figure">
+                            <div class="shot is-video">
+                                <video src="Video.mp4" poster="video-poster.jpg" controls muted playsinline preload="metadata"
+                                       aria-label="Laptop stand deployment sequence"></video>
+                            </div>
+                            <figcaption><strong>Deployment Sequence:</strong> Released from stowed, the spring drives the platform up; setting the laptop down seats the flap into its locked position.</figcaption>
+                        </figure>
+                        <figure>
+                            <div class="shot is-square"><img src="Prototype.jpeg" alt="Printed laptop stand prototype, deployed" loading="lazy" decoding="async"></div>
+                            <figcaption><strong>Deployed Assembly:</strong> The printed stand in its working position, with the drop-down flap seated and carrying the laptop load in compression rather than bending.</figcaption>
+                        </figure>
+                        <figure>
+                            <div class="shot"><img src="Isometric 1.png" alt="CAD model of the laptop stand, deployed isometric view" loading="lazy" decoding="async"></div>
+                            <figcaption><strong>Deployed Geometry:</strong> CAD model of the full assembly at its working angle, where the parallelogram linkage keeps the platform level throughout its travel.</figcaption>
+                        </figure>
+                        <figure>
+                            <div class="shot"><img src="Stowed 1.png" alt="CAD model of the laptop stand, stowed flat" loading="lazy" decoding="async"></div>
+                            <figcaption><strong>Stowed State:</strong> The same assembly collapsed flat and latched at the front, sized to store without disassembly.</figcaption>
+                        </figure>
+
+                        <!-- Displacement pair: side by side so the color scales compare directly -->
+                        <div class="cmp-block">
+                            <p class="card-sub cmp-note">The same load case run on the first design and the final one.</p>
+                            <div class="cmp-grid">
+                                <figure>
+                                    <div class="shot is-contain"><img src="Displacement 1.png" alt="SolidWorks displacement plot, first design iteration" loading="lazy" decoding="async"></div>
+                                    <figcaption><strong>Baseline Displacement:</strong> First iteration under load, carrying the platform on a linkage-integral hard stop. Peak resultant displacement near 2 mm.</figcaption>
+                                </figure>
+                                <figure>
+                                    <div class="shot is-contain"><img src="Displacement 2.png" alt="SolidWorks displacement plot, final design" loading="lazy" decoding="async"></div>
+                                    <figcaption><strong>Final Displacement:</strong> Peak displacement drops to roughly 0.1 mm. The flagged maximum sits at the latch, which hangs free before the solve rather than deflecting under load.</figcaption>
+                                </figure>
+                            </div>
+                        </div>
+                    </div>
+
                     <ul class="details">
-                        <li><strong>First-Principles Statics:</strong> Derived the linkage statics symbolically before touching software, proving by contradiction that a parallelogram linkage has no equilibrium at any deployed angle, identifying the hard stop, not the linkage or spring, as the primary load path. Re-derived the result via a second independent free-body decomposition as a check.</li>
-                        <li><strong>FEA Model &amp; Debugging:</strong> Built a finite element model in SolidWorks Simulation with no prior FEA experience: pin connectors at revolute joints, a non-bonded compression-only contact at the stop (reasoned from the hand analysis), distributed pressure and gravity. Diagnosed an unconstrained-body solver instability, resolved a large-displacement/pin-connector incompatibility, and ran mesh convergence to confirm the stress concentration was real, not a meshing artifact (13.8 MPa peak, FoS 3.6).</li>
-                        <li><strong>Load-Support Architecture:</strong> Redesigned the load support from hard stops in the linkages to a drop-down compression flap, recognizing that a single-arc linkage cannot lock against a passive stop without traveling past dead center. Instead of the platform swinging over the top to seat on a far-side stop, the flap drops into place at the working angle, playing to PETG's compressive strength instead of loading it in bending where it creeps.</li>
-                        <li><strong>Mass Reduction &amp; Ribbing:</strong> Cut a platform's mass 46% (566 to 308 g) via an FEA-driven hollowing-and-ribbing iteration; when hollowing introduced excess flex, applied injection-molding rib principles (height-dominant stiffness, ribs thinner than parent wall, concave root fillets) to make it 3&times; stiffer than its unribbed intermediate (2.34 to 0.78 mm), recognizing deflection, not stress, as the governing metric.</li>
-                        <li><strong>Materials Testing:</strong> Reasoned through FDM anisotropic strength from first principles, then ran a 12-sample controlled bend test (4 infill patterns &times; 3 densities) on printed PETG. Quantified measurement uncertainty at &plusmn;1.6% before claiming significance, found infill pattern affects stiffness ~3&times; more than density (13% vs 3.6%), and thickened outer walls rather than raising infill.</li>
+                        <li><strong>First-Principles Statics:</strong> Derived the statics of the spring-deployed parallelogram linkage symbolically before opening any software, proving by contradiction that no equilibrium exists at any deployed angle. The hard stop, not the linkage or spring, carries the load, which reframed the whole design.</li>
+                        <li><strong>Load-Support Architecture:</strong> Replaced linkage-integral stops with a drop-down compression flap, since a single-arc linkage cannot lock against a passive stop without traveling past dead center. The flap also loads the printed part in compression rather than bending, where PETG creeps under sustained load.</li>
+                        <li><strong>FEA-Driven Iteration:</strong> Cut max resultant displacement from 2 mm to 0.1 mm under the same load case, moving the load path to the compression flap and lightweighting the platform 46% from 566 to 308 g via a rib iteration, after recognizing deflection rather than stress as the governing metric.</li>
+                        <li><strong>Destructive Load Test:</strong> Loaded the assembled stand to failure at 215 N, roughly 10&times; the worst-case design load, and diagnosed the failure as a friction joint sliding along its own axis rather than a material failure, with no fracture or yield anywhere in the structure.</li>
+                        <li><strong>Materials Testing:</strong> Designed and ran a 12-sample bend test on printed PETG across four infill patterns and three densities, quantifying measurement repeatability at &plusmn;1.6% before treating any difference as significant. Infill pattern drove stiffness roughly 3&times; more than density, so walls were thickened instead of raising infill.</li>
+                        <li><strong>Build Iteration:</strong> Two full stand iterations plus many single-part revisions. A dovetail retaining wall that flexed and let the joint pop out was redesigned for stiffness rather than fit, an overshoot stop destroyed by spring impact was rebuilt with load-guiding geometry, and a rigid latch that tore off was redesigned as a single printed body with a thin web engineered to fracture once and thereafter act as a free-rotating hinge.</li>
                     </ul>
+
+                    <p class="card-note"><strong>Simulation assumptions:</strong> Fixed base, idealized pivoting hinge points with no bolted hardware, 100% infill solids where the printed parts are 25%, bonded dovetail joints, isotropic material properties, nominal rather than as-printed dimensions, and no springs modeled. Static solve, so no creep. Results are comparative between iterations under a common load case rather than absolute predictions.</p>
+                    <p class="card-note"><strong>Known limitations:</strong> The platform can tilt back slightly when stowed and lock up if pushed from behind in that state. The linkage stop allows marginally more travel than intended, so the flap seats on load rather than on deployment. The back of the platform does not stow fully flat, since the latch is only at the front. The deploy springs are strong enough that release without a guiding hand can drive the flap past its stop. Each has an identified fix that was scoped out under time constraints.</p>
                 </article>
 
                 <!-- X1 Robotics -->
@@ -1000,7 +1088,12 @@
             var group = [], index = 0, lastFocused = null;
 
             document.querySelectorAll('.gallery').forEach(function (gallery) {
-                var figures = [].slice.call(gallery.querySelectorAll('figure'));
+                /* Only figures holding a real <img> belong in the lightbox.
+                   Video figures play in place and are filtered out here, so the
+                   prev/next indices stay correct and render() never sees a null image. */
+                var figures = [].slice.call(gallery.querySelectorAll('figure')).filter(function (f) {
+                    return !!f.querySelector('.shot img');
+                });
                 figures.forEach(function (fig, i) {
                     var shot = fig.querySelector('.shot'), img = fig.querySelector('img');
                     if (!shot || !img) return;
@@ -1042,7 +1135,23 @@
             });
         })();
 
-        /* 5. BACK TO TOP */
+        /* 5. GALLERY VIDEO — grows to full gallery width while playing, shrinks back
+              when paused or finished. Also pauses any other gallery video first so
+              two never play at once. */
+        (function () {
+            var vids = [].slice.call(document.querySelectorAll('.gallery .shot.is-video video'));
+            vids.forEach(function (v) {
+                var fig = v.closest('figure');
+                v.addEventListener('play', function () {
+                    vids.forEach(function (o) { if (o !== v) o.pause(); });
+                    if (fig) fig.classList.add('is-playing');
+                });
+                v.addEventListener('pause', function () { if (fig) fig.classList.remove('is-playing'); });
+                v.addEventListener('ended', function () { if (fig) fig.classList.remove('is-playing'); });
+            });
+        })();
+
+        /* 6. BACK TO TOP */
         (function () {
             var btn = document.getElementById('toTop');
             window.addEventListener('scroll', function () { btn.classList.toggle('show', window.scrollY > 600); }, { passive: true });
