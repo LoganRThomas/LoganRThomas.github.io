@@ -394,18 +394,15 @@
            sit on white, so the letterbox blends into the artwork instead of framing it.
            Without this the bars read as a misaligned border, and they differ per image
            since no two plots share an aspect ratio. */
-        .gallery .shot.is-fit { background: #ffffff; }
-        .gallery .shot.is-fit img { object-fit: contain; background: #ffffff; }
-        /* CAD screen captures are line art, which is the worst case for the browser's
-           default downscaling filter. Ask for the high-quality resampler on every gallery
-           image, and drop the hover zoom on the contained ones: a transformed image gets
-           composited on its own layer and can be rasterized once at lower quality, which
-           reads as blur at small sizes. */
-        .gallery .shot img {
-            image-rendering: -webkit-optimize-contrast;
-            image-rendering: high-quality;
-        }
-        .gallery .shot.is-fit:hover img { transform: none; }
+        /* FEA plots: no frame at all. These sit on SolidWorks' blue-grey viewport
+           gradient, so any matte color contrasts instead of blending, and since no two
+           plots share an aspect ratio the letterbox lands on different edges each time,
+           which reads as a misaligned border. Dropping the border and background means
+           the only visible edge is the image's own, and the box height stays fixed so
+           the pair still bottom-aligns. */
+        .gallery .shot.is-plot { border: none; background: transparent; }
+        .gallery .shot.is-plot img { object-fit: contain; }
+        .gallery .shot.is-plot::after { content: none; }
         /* Wider box for the FEA plots, whose color scale must not be cropped. */
         .gallery .shot.is-wide { aspect-ratio: 16 / 10; }
 
@@ -824,11 +821,11 @@
                             <figcaption><strong>Deployed Assembly:</strong> The printed stand in its working position, with the drop-down flap seated and carrying the laptop load in compression rather than bending.</figcaption>
                         </figure>
                         <figure>
-                            <div class="shot is-fit"><img src="Isometric 1.png" alt="CAD model of the laptop stand, deployed isometric view" loading="lazy" decoding="async"></div>
+                            <div class="shot"><img src="Isometric 1.png" alt="CAD model of the laptop stand, deployed isometric view" loading="lazy" decoding="async"></div>
                             <figcaption><strong>Deployed Geometry:</strong> CAD model of the full assembly at its working angle, where the parallelogram linkage keeps the platform level throughout its travel.</figcaption>
                         </figure>
                         <figure>
-                            <div class="shot is-fit"><img src="Stowed 1.png" alt="CAD model of the laptop stand, stowed flat" loading="lazy" decoding="async"></div>
+                            <div class="shot"><img src="Stowed 1.png" alt="CAD model of the laptop stand, stowed flat" loading="lazy" decoding="async"></div>
                             <figcaption><strong>Stowed State:</strong> The same assembly collapsed flat and latched at the front, sized to store without disassembly.</figcaption>
                         </figure>
 
@@ -837,11 +834,11 @@
                             <p class="card-sub cmp-note">The same load case run on the first design and the final one.</p>
                             <div class="cmp-grid">
                                 <figure>
-                                    <div class="shot is-wide is-fit"><img src="Displacement 1.png" alt="SolidWorks displacement plot, first design iteration" loading="lazy" decoding="async"></div>
+                                    <div class="shot is-wide is-plot"><img src="Displacement 1.png" alt="SolidWorks displacement plot, first design iteration" loading="lazy" decoding="async"></div>
                                     <figcaption><strong>Baseline Displacement:</strong> First iteration under load, carrying the platform on a linkage-integral hard stop. Peak resultant displacement near 2 mm.</figcaption>
                                 </figure>
                                 <figure>
-                                    <div class="shot is-wide is-fit"><img src="Displacement 2.png" alt="SolidWorks displacement plot, final design" loading="lazy" decoding="async"></div>
+                                    <div class="shot is-wide is-plot"><img src="Displacement 2.png" alt="SolidWorks displacement plot, final design" loading="lazy" decoding="async"></div>
                                     <figcaption><strong>Final Displacement:</strong> Peak displacement drops to roughly 0.1 mm. The flagged maximum sits at the latch, which hangs free before the solve rather than deflecting under load.</figcaption>
                                 </figure>
                             </div>
